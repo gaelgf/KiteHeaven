@@ -7,30 +7,30 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * User
- *
- * @ORM\Table(name="user")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
+ * @ORM\Entity
+ * @ORM\Table(name="fos_user")
  */
-class User
+class User extends BaseUser
 {
 
     /**
-     * @ORM\OneToMany(targetEntity="Notice", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="Notice", mappedBy="fos_user")
      */
     protected $notices;
 
     /**
-     * @ORM\OneToMany(targetEntity="Spot", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="Spot", mappedBy="fos_user")
      */
     protected $spots;
 
     /**
-     * @ORM\OneToMany(targetEntity="Comment", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="fos_user")
      */
     protected $comments;
 
     public function __construct()
     {
+        parent::__construct();
         $this->notices = new ArrayCollection();
         $this->spots = new ArrayCollection();
         $this->comments = new ArrayCollection();
