@@ -45,77 +45,56 @@ class User extends BaseUser
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="$userName", type="string", length=30, unique=true)
-     */
-    private $userName;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="password", type="string", length=255)
-     */
-    private $password;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="email", type="string", length=255, unique=true)
-     */
-    private $email;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="lastName", type="string", length=255)
      */
-    private $lastName;
+    protected $lastName;
 
     /**
      * @var string
      *
      * @ORM\Column(name="firstName", type="string", length=255)
      */
-    private $firstName;
+    protected $firstName;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="dateOfBirth", type="datetime")
      */
-    private $dateOfBirth;
+    protected $dateOfBirth;
 
     /**
      * @var string
      *
      * @ORM\Column(name="address", type="string", length=255)
      */
-    private $address;
+    protected $address;
 
     /**
      * @var int
      *
      * @ORM\Column(name="zipCode", type="integer")
      */
-    private $zipCode;
+    protected $zipCode;
 
     /**
      * @var string
      *
      * @ORM\Column(name="city", type="string", length=255)
      */
-    private $city;
+    protected $city;
 
     /**
      * @var string
      *
      * @ORM\Column(name="job", type="string", length=255)
      */
-    private $job;
+    protected $job;
 
 
     /**
@@ -127,31 +106,7 @@ class User extends BaseUser
     {
         return $this->id;
     }
-
-    /**
-     * Set userName
-     *
-     * @param string $userName
-     *
-     * @return User
-     */
-    public function setUserName($userName)
-    {
-        $this->userName = $userName;
-
-        return $this;
-    }
-
-    /**
-     * Get userName
-     *
-     * @return string
-     */
-    public function getUserName()
-    {
-        return $this->userName;
-    }
-
+    
     /**
      * Set password
      *
@@ -342,21 +297,5 @@ class User extends BaseUser
     public function getJob()
     {
         return $this->job;
-    }
-
-    /**
-     * @return string
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
-     * @param string $email
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
     }
 }
