@@ -29,21 +29,21 @@ class Notice
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var int
      *
      * @ORM\Column(name="note", type="smallint")
      */
-    private $note;
+    protected $note;
 
     /**
      * @var string
      *
      * @ORM\Column(name="comment", type="text")
      */
-    private $comment;
+    protected $comment;
 
 
     /**

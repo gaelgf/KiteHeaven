@@ -29,14 +29,14 @@ class Comment
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="text", type="text")
      */
-    private $text;
+    protected $text;
 
 
     /**

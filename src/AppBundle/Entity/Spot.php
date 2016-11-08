@@ -47,35 +47,35 @@ class Spot
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=30)
      */
-    private $title;
+    protected $title;
 
     /**
      * @var string
      *
      * @ORM\Column(name="imageTitle", type="string", length=255)
      */
-    private $imageTitle;
+    protected $imageTitle;
 
     /**
      * @var string
      *
      * @ORM\Column(name="address", type="string", length=255)
      */
-    private $address;
+    protected $address;
 
     /**
      * @var string
      *
      * @ORM\Column(name="description", type="text")
      */
-    private $description;
+    protected $description;
 
 
     /**
@@ -184,4 +184,3 @@ class Spot
         return $this->description;
     }
 }
-
