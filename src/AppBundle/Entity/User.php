@@ -298,4 +298,30 @@ class User extends BaseUser
     {
         return $this->job;
     }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getComments()
+    {
+        return $this->comments;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getNotices()
+    {
+        return $this->notices;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getSpots()
+    {
+        return $this->spots;
+    }
+
+
 }

@@ -112,5 +112,23 @@ class Item
     {
         return $this->type;
     }
+
+    /**
+     * @return Spot
+     */
+    public function getSpot()
+    {
+        return $this->spot;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getCategories()
+    {
+        return $this->categories;
+    }
+
+
 }
 

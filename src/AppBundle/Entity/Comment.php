@@ -72,5 +72,23 @@ class Comment
     {
         return $this->text;
     }
+
+    /**
+     * @return User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @return Spot
+     */
+    public function getSpot()
+    {
+        return $this->spot;
+    }
+
+
 }
 

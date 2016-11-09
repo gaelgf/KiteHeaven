@@ -74,5 +74,15 @@ class Category
     {
         return $this->name;
     }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getItems()
+    {
+        return $this->items;
+    }
+
+
 }
 

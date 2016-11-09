@@ -183,4 +183,72 @@ class Spot
     {
         return $this->description;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param mixed $user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getNotices()
+    {
+        return $this->notices;
+    }
+
+    /**
+     * @param ArrayCollection $notices
+     */
+    public function setNotices($notices)
+    {
+        $this->notices = $notices;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getComments()
+    {
+        return $this->comments;
+    }
+
+    /**
+     * @param ArrayCollection $comments
+     */
+    public function setComments($comments)
+    {
+        $this->comments = $comments;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getItems()
+    {
+        return $this->items;
+    }
+
+    /**
+     * @param ArrayCollection $items
+     */
+    public function setItems($items)
+    {
+        $this->items = $items;
+    }
+
+    
+
+
 }
