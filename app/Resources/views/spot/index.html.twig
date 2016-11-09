@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Spot list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Imagetitle</th>
+                <th>Address</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for spot in spots %}
+            <tr>
+                <td><a href="{{ path('spot_show', { 'id': spot.id }) }}">{{ spot.id }}</a></td>
+                <td>{{ spot.title }}</td>
+                <td>{{ spot.imageTitle }}</td>
+                <td>{{ spot.address }}</td>
+                <td>{{ spot.description }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('spot_show', { 'id': spot.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('spot_edit', { 'id': spot.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('spot_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}
