@@ -14,6 +14,7 @@ class Notice
 {
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="notices")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     protected $user;
 

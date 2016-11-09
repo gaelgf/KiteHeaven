@@ -15,17 +15,17 @@ class User extends BaseUser
 {
 
     /**
-     * @ORM\OneToMany(targetEntity="Notice", mappedBy="fos_user")
+     * @ORM\OneToMany(targetEntity="Notice", mappedBy="user")
      */
     protected $notices;
 
-    /**
-     * @ORM\OneToMany(targetEntity="Spot", mappedBy="fos_user")
+        /**
+     * @ORM\OneToMany(targetEntity="Spot", mappedBy="user")
      */
     protected $spots;
 
     /**
-     * @ORM\OneToMany(targetEntity="Comment", mappedBy="fos_user")
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="user")
      */
     protected $comments;
 

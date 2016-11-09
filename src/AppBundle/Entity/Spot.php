@@ -15,6 +15,7 @@ class Spot
 {
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="spots")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     protected $user;
 
