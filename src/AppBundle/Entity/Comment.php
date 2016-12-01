@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -37,6 +38,21 @@ class Comment
      * @ORM\Column(name="text", type="text")
      */
     protected $text;
+
+    /**
+     * @var datetime $created
+     *
+     * @ORM\Column(type="datetime")
+     */
+    protected $created;
+
+    /**
+     * Comment constructor.
+     */
+    public function __construct()
+    {
+        $this->created = new \DateTime();
+    }
 
 
     /**
@@ -87,6 +103,27 @@ class Comment
     public function getSpot()
     {
         return $this->spot;
+    }
+
+    /**
+     * @param User $user
+     */
+    public function setUser(User $user)
+    {
+        $this->user = $user;
+    }
+
+    public function setSpot(Spot $spot)
+    {
+        $this->spot = $spot;
+    }
+
+    /**
+     * @return String
+     */
+    public function getCreated()
+    {
+        return $this->created->format('Y-m-d H:i:s');
     }
 
 

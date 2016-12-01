@@ -105,6 +105,41 @@ class Notice
         return $this->comment;
     }
 
+    /**
+     * @param User $user
+     */
+    public function setUser(User $user)
+    {
+        $this->user = $user;
+    }
 
+    /**
+     * @param Spot $spot
+     */
+    public function setSpot(Spot $spot)
+    {
+        $this->spot = $spot;
+    }
+
+
+
+    /**
+     * Get user
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Get spot
+     *
+     * @return \AppBundle\Entity\Spot
+     */
+    public function getSpot()
+    {
+        return $this->spot;
+    }
 }
-

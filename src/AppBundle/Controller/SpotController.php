@@ -2,6 +2,9 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Comment;
+use AppBundle\Entity\Notice;
+use AppBundle\Repository\NoticeRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -42,6 +45,7 @@ class SpotController extends Controller
     public function newAction(Request $request)
     {
         $spot = new Spot();
+        $spot->setUser($this->get('security.token_storage')->getToken()->getUser());
         $form = $this->createForm('AppBundle\Form\SpotType', $spot);
         $form->handleRequest($request);
 
@@ -63,15 +67,58 @@ class SpotController extends Controller
      * Finds and displays a Spot entity.
      *
      * @Route("/{id}", name="spot_show")
-     * @Method("GET")
+     * @Method({"GET", "POST"})
+     * @param Spot $spot
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function showAction(Spot $spot)
+    public function showAction(Spot $spot, Request $request)
     {
         $deleteForm = $this->createDeleteForm($spot);
 
+        $notice = new Notice();
+        $noticeForm = $this->createForm('AppBundle\Form\NoticeType', $notice);
+        $noticeForm->handleRequest($request);
+
+        $comment = new Comment();
+        $commentForm = $this->createForm('AppBundle\Form\CommentType', $comment);
+        $commentForm->handleRequest($request);
+
+        if ($noticeForm->isSubmitted() && $noticeForm->isValid()) {
+            $notice->setUser($this->get('security.token_storage')->getToken()->getUser());
+            $notice->setSpot($spot);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($notice);
+            $em->flush();
+
+            return $this->redirectToRoute('spot_show', array('id' => $spot->getId()));
+        }
+
+
+        if ($commentForm->isSubmitted() && $commentForm->isValid()) {
+            $comment->setUser($this->get('security.token_storage')->getToken()->getUser());
+            $comment->setSpot($spot);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($comment);
+            $em->flush();
+
+            return $this->redirectToRoute('spot_show', array('id' => $spot->getId()));
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        /**
+         * @var NoticeRepository $noticeRepository
+         */
+        $noticeRepository = $em->getRepository('AppBundle:Notice');
+        $averageNote = $noticeRepository->getAverageNotes($spot->getId());
         return $this->render('spot/show.html.twig', array(
             'spot' => $spot,
             'delete_form' => $deleteForm->createView(),
+            'comment_form' => $commentForm->createView(),
+            'notice_form' => $noticeForm->createView(),
+            'notices' => $spot->getNotices(),
+            'comments' => $spot->getComments(),
+            'averageNote' => number_format($averageNote, 2, ',', ' ')
         ));
     }
 
@@ -95,11 +142,15 @@ class SpotController extends Controller
             return $this->redirectToRoute('spot_edit', array('id' => $spot->getId()));
         }
 
-        return $this->render('spot/edit.html.twig', array(
-            'spot' => $spot,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
+        return $this->render(
+            'spot/edit.html.twig',
+            array(
+                'spot' => $spot,
+                'edit_form' => $editForm->createView(),
+                'delete_form' => $deleteForm->createView(),
+                )
+        );
+
     }
 
     /**

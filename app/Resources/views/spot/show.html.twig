@@ -41,4 +41,34 @@
             {{ form_end(delete_form) }}
         </li>
     </ul>
+
+    <h2>COMMENTAIRES</h2>
+    -----------------------------------------------
+    {% for comment in comments %}
+      <p>{{ comment.user.username }}</p>
+      <p>{{ comment.text }}</p>
+      <p>{{ comment.created }}</p>
+    {%  endfor %}
+    -------------------------------------------------
+    {{ form_start(comment_form) }}
+        {{ form_widget(comment_form) }}
+        <input type="submit" value="commenter" />
+    {{ form_end(comment_form) }}
+
+
+    <h2>NOTES</h2>
+    -----------------------------------------------
+    {% for notice in notices %}
+        <p>{{ notice.user.username }}</p>
+        <p>{{ notice.comment }}</p>
+        <p>{{ notice.note }}</p>
+    {%  endfor %}
+    -------------------------------------------------
+    {{ form_start(notice_form) }}
+    {{ form_widget(notice_form) }}
+    <input type="submit" value="noter" />
+    {{ form_end(notice_form) }}
+
+    <h2>NOTE MOYENNE</h2>
+    {{ averageNote }}
 {% endblock %}

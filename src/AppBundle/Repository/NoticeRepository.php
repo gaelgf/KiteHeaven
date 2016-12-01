@@ -10,4 +10,20 @@ namespace AppBundle\Repository;
  */
 class NoticeRepository extends \Doctrine\ORM\EntityRepository
 {
+
+    /**
+     * @param int $spot_id
+     * @return double
+     */
+    public function getAverageNotes($spot_id)
+    {
+        $query = $this->createQueryBuilder('notice')
+            ->select('AVG(notice.note) as sum_notes')
+            ->where('notice.spot = :spot_id')
+            ->setParameter('spot_id', $spot_id)
+            ->getQuery();
+
+        $notes = $query->getResult();
+        return $notes[0]['sum_notes'];
+    }
 }
