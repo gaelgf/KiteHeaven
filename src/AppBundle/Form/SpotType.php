@@ -15,14 +15,12 @@ class SpotType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title')
-            ->add('imageTitle')
-            ->add('address')
-            ->add('description')
-            ->add('user')
-        ;
+            ->add('title', null, array('label' => 'Nom du spot'))
+            ->add('imageTitle', null, array('label' => 'Lien d\'image'))
+            ->add('address', null, array('label' => 'Adresse'))
+            ->add('description', null, array('label' => 'Description'));
     }
-    
+
     /**
      * @param OptionsResolver $resolver
      */
