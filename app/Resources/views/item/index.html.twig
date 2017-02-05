@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Item list</h1>
+    <ul>
+        <li>
+            <a href="{{ path('video_list') }}">video</a>
+        </li>
+        <li>
+            <a href="{{ path('image_list') }}">image</a>
+        </li>
+    </ul>
+{% endblock %}

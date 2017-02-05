@@ -129,6 +129,21 @@ class Item
         return $this->categories;
     }
 
+    /**
+     * @param mixed $categories
+     */
+    public function setCategories($categories)
+    {
+        $this->categories = $categories;
+    }
+
+    /**
+     * @param mixed $spot
+     */
+    public function setSpot($spot)
+    {
+        $this->spot = $spot;
+    }
 
 }
 

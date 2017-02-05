@@ -80,4 +80,21 @@
       {{ form_end(comment_form) }}
 
     </div>
+
+    <h2>NOTES</h2>
+    -----------------------------------------------
+    {% for notice in notices %}
+        <p>{{ notice.user.username }}</p>
+        <p>{{ notice.comment }}</p>
+        <p>{{ notice.note }}</p>
+    {%  endfor %}
+    -------------------------------------------------
+    {% if spot.user.id != app.user.id %}
+        {{ form_start(notice_form) }}
+        {{ form_widget(notice_form) }}
+        <input type="submit" value="noter" />
+        {{ form_end(notice_form) }}
+    {% endif %}
+    <h2>NOTE MOYENNE</h2>
+    {{ averageNote }}
 {% endblock %}

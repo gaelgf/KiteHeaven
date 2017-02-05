@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Spot list</h1>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Type</th>
+            <th>Url</th>
+            <th>Categories :</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in items %}
+            <tr>
+                <td><a href="{{ path('item_show', { 'id': item.id }) }}">{{ item.id }}</a></td>
+                <td>{{ item.type }}</td>
+                <td>{{ item.url }}</td>
+                <td>
+                    {% for category in item.categories %}
+                        {{ category.name , }}
+                    {% endfor %}
+                </td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('item_show', { 'id': spot.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('item_edit', { 'id': spot.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('spot_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+    {% for item in items %}
+      <p>{{ item.type }}</p>
+      <p>{{ item.url  }}</p>
+    {%  endfor %}
+{% endblock %}
