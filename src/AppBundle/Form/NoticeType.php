@@ -15,11 +15,8 @@ class NoticeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('note');
-        //     ->add('comment')
-        //     ->add('user')
-        //     ->add('spot')
-        // ;
+            ->add('note')
+            ->add('comment');
     }
 
     /**
