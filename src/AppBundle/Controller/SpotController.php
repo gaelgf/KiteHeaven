@@ -50,6 +50,13 @@ class SpotController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $file= $spot->getImageTitle();
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+            $file->move(
+                $this->getParameter('file_upload_directory'),
+                $fileName
+            );
+            $spot->setImageTitle($fileName);
             $em = $this->getDoctrine()->getManager();
             $em->persist($spot);
             $em->flush();
