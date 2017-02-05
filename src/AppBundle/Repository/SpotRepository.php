@@ -14,11 +14,15 @@ class SpotRepository extends \Doctrine\ORM\EntityRepository
      * @param int $user_id
      * @return double
      */
-    public function getSpots($user_id)
+    public function getSpots($user_id = null)
     {
-        $query = $this->createQueryBuilder('spot')
-            ->where('spot.user = :user_id')
-            ->setParameter('user_id', $user_id);
+        if(isset($user_id)) {
+          $query = $this->createQueryBuilder('spot')
+                        ->where('spot.user = :user_id')
+                        ->setParameter('user_id', $user_id);
+        } else {
+          $query = $this->createQueryBuilder('spot');
+        }
 
         return $query;
     }

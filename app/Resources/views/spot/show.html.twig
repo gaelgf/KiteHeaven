@@ -38,13 +38,13 @@
       <br><br>
 
       <h5>Noter ce spot</h5>
-      {{ form_start(notice_form) }}
-      {{ form_widget(notice_form) }}
-      <div style="text-align: right; margin-top:20px;">
-        <button class="btn waves-effect waves-light" type="submit" name="action" value="Create">Noter
-          <i class="material-icons right">send</i>
-        </button>
-      </div>
+        {{ form_start(notice_form) }}
+        {{ form_widget(notice_form) }}
+        <div style="text-align: right; margin-top:20px;">
+          <button class="btn waves-effect waves-light" type="submit" name="action" value="Create">Noter
+            <i class="material-icons right">send</i>
+          </button>
+        </div>
       {{ form_end(notice_form) }}
 
       <br><br>
@@ -81,7 +81,7 @@
 
     </div>
 
-    <h2>NOTES</h2>
+    <!-- <h2>NOTES</h2>
     -----------------------------------------------
     {% for notice in notices %}
         <p>{{ notice.user.username }}</p>
@@ -89,12 +89,12 @@
         <p>{{ notice.note }}</p>
     {%  endfor %}
     -------------------------------------------------
-    {% if spot.user.id != app.user.id %}
+    {% if spot.user != app.user.id %}
         {{ form_start(notice_form) }}
         {{ form_widget(notice_form) }}
         <input type="submit" value="noter" />
         {{ form_end(notice_form) }}
     {% endif %}
     <h2>NOTE MOYENNE</h2>
-    {{ averageNote }}
+    {{ averageNote }} -->
 {% endblock %}

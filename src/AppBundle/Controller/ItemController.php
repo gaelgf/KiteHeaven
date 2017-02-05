@@ -113,7 +113,7 @@ class ItemController extends Controller
                 }
             }
             $em->flush();
-            return $this->redirectToRoute('item_show', array('id' => $item->getId()));
+            return $this->redirectToRoute('image_list');
         }
 
         return $this->render('item/new.html.twig', array(
@@ -145,7 +145,7 @@ class ItemController extends Controller
                 $category->getItems()->add($item);
             }
             $em->flush();
-            return $this->redirectToRoute('item_show', array('id' => $item->getId()));
+            return $this->redirectToRoute('video_list');
         }
 
         return $this->render('item/new_video.html.twig', array(

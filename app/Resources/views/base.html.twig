@@ -17,6 +17,8 @@
               <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
               <ul class="right hide-on-med-and-down">
                 <li><a href="{{ path('spot_index') }}">Spots</a></li>
+                <li><a href="{{ path('video_list') }}">Vidéos</a></li>
+                <li><a href="{{ path('image_list') }}">Images</a></li>
                 {% if app.user %}
                   <li><a href="{{ path("fos_user_profile_show") }}" >Mon compte</a></li>
                   <li><a href="{{ path("fos_user_security_logout") }}" >Deconnexion</a></li>
@@ -27,6 +29,8 @@
               </ul>
               <ul class="side-nav" id="mobile-demo">
                 <li><a href="{{ path('spot_index') }}">Spots</a></li>
+                <li><a href="{{ path('video_list') }}">Vidéos</a></li>
+                <li><a href="{{ path('image_list') }}">Images</a></li>
                 {% if app.user %}
                   <li><a href="{{ path("fos_user_profile_show") }}" >Mon compte</a></li>
                   <li><a href="{{ path("fos_user_security_logout") }}" >Deconnexion</a></li>
@@ -78,6 +82,7 @@
             $('select').material_select();
           });
           $(document).ready(function(){
+            $('.materialboxed').materialbox();
             $(".button-collapse").sideNav();
             $('select').material_select();
             $('.parallax').parallax();

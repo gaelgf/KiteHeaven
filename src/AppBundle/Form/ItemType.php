@@ -20,25 +20,24 @@ class ItemType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('categories', EntityType::class, array(
-                    'label' => 'Liste des categories',
-                    'class'        => 'AppBundle\Entity\Category',
-                    'choice_label' => 'name',
-                    'multiple'     => true,
-                )
-            )
-            ->add('spot', EntityType::class, array(
+        // $builder->add('categories', EntityType::class, array(
+        //             'label' => 'Liste des categories',
+        //             'class'        => 'AppBundle\Entity\Category',
+        //             'choice_label' => 'name'
+        //         )
+        //     )
+            $builder->add('spot', EntityType::class, array(
                     'label' => 'Liste des spots',
                     'class'        => 'AppBundle\Entity\Spot',
                     'query_builder' => function (SpotRepository $er) use ($options) {
-                        return $er->getSpots($options['id_user']);
+                        return $er->getSpots();
                     },
                     'choice_label' => 'title',
                 )
             );
 
         if ($options['item_type'] == 'image') {
-            $builder->add('url', FileType::class, array('label' => 'Picture(s) to upload', 'multiple' => true));
+            $builder->add('url', FileType::class, array('label' => 'Image(s) à ajouter ', 'multiple' => true));
         } else if ($options['item_type'] == 'video') {
             $builder->add('url');
         } else {

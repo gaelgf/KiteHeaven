@@ -1,8 +1,22 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+<div class="container">
+  <h1>Images</h1>
+
+  <div class="row">
     {% for item in items %}
-      <p>{{ item.type }}</p>
-      <p>{{ item.url  }}</p>
-    {%  endfor %}
+      <div class="col s4">
+        <img width="200px" class="materialboxed" src="{{ asset('uploads/file/' ~ item.url) }}" alt="">
+        <h6>{{item.spot.title}}</h6>
+      </div>
+    {% endfor %}
+  </div>
+
+  <div style="text-align: right; margin-top:20px;">
+    <a class="btn waves-effect waves-light" href="{{ path('image_new') }}">Ajouter une image
+      <i class="material-icons right">add</i>
+    </a>
+  </div>
+</div>
 {% endblock %}
