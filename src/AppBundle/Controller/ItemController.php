@@ -148,7 +148,7 @@ class ItemController extends Controller
             return $this->redirectToRoute('item_show', array('id' => $item->getId()));
         }
 
-        return $this->render('item/new.html.twig', array(
+        return $this->render('item/new_video.html.twig', array(
             'item'       => $item,
             'form'       => $form->createView()
         ));

@@ -1,13 +1,15 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<h1>Adding a new video</h1>
+<div class="container">
+  <h1>Ajouter une vidéo</h1>
 
-{{ form_start(form) }}
-    {{ form_row(form.type) }}
+  {{ form_start(form) }}
+    {{ form_row(form.spot) }}
     {{ form_row(form.url) }}
     {{ form_row(form.categories) }}
     <input type="submit" value="Create" />
-{{ form_end(form) }}
+  {{ form_end(form) }}
+</div>
 
 {% endblock %}

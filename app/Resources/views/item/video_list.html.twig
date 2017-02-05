@@ -21,16 +21,16 @@
                 <td>{{ item.url }}</td>
                 <td>
                     {% for category in item.categories %}
-                        {{ category.name , }}
+                        {{ category.name}}
                     {% endfor %}
                 </td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('item_show', { 'id': spot.id }) }}">show</a>
+                            <a href="{{ path('item_show', { 'id': item.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('item_edit', { 'id': spot.id }) }}">edit</a>
+                            <a href="{{ path('item_edit', { 'id': item.id }) }}">edit</a>
                         </li>
                     </ul>
                 </td>
