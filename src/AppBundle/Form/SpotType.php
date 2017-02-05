@@ -3,6 +3,7 @@
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -16,7 +17,7 @@ class SpotType extends AbstractType
     {
         $builder
             ->add('title', null, array('label' => 'Nom du spot'))
-            ->add('imageTitle', null, array('label' => 'Lien d\'image'))
+            ->add('imageTitle', FileType::class, array('label' => 'Lien d\'image'))
             ->add('address', null, array('label' => 'Adresse'))
             ->add('description', null, array('label' => 'Description'));
     }
