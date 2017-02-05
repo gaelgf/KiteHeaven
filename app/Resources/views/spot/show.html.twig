@@ -1,74 +1,61 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Spot</h1>
+    <div class="container">
+      <ul>
+          <li>
+              <a href="{{ path('spot_index') }}"><i class="material-icons" style="vertical-align: middle;">view_list</i> Liste des spots</a>
+          </li>
+      </ul>
+      <h1>{{spot.title}}</h1>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ spot.id }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ spot.title }}</td>
-            </tr>
-            <tr>
-                <th>Imagetitle</th>
-                <td>{{ spot.imageTitle }}</td>
-            </tr>
-            <tr>
-                <th>Address</th>
-                <td>{{ spot.address }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ spot.description }}</td>
-            </tr>
-        </tbody>
-    </table>
+      <div>
+        <img class="responsive-img z-depth-5" style="width: 100%;" src="{{ spot.imageTitle }}">
+      </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('spot_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('spot_edit', { 'id': spot.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+      <h3>{{ spot.address }}</h3>
 
-    <h2>COMMENTAIRES</h2>
-    -----------------------------------------------
-    {% for comment in comments %}
-      <p>{{ comment.user.username }}</p>
-      <p>{{ comment.text }}</p>
-      <p>{{ comment.created }}</p>
-    {%  endfor %}
-    -------------------------------------------------
-    {{ form_start(comment_form) }}
-        {{ form_widget(comment_form) }}
-        <input type="submit" value="commenter" />
-    {{ form_end(comment_form) }}
+      <p>{{ spot.description }}</p>
+
+      <ul>
+          <li>
+              <a href="{{ path('spot_index') }}">Back to the list</a>
+          </li>
+          <li>
+              <a href="{{ path('spot_edit', { 'id': spot.id }) }}">Edit</a>
+          </li>
+          <li>
+              {{ form_start(delete_form) }}
+                  <input type="submit" value="Delete">
+              {{ form_end(delete_form) }}
+          </li>
+      </ul>
+
+      <h5>COMMENTAIRES</h5>
+      {% for comment in comments %}
+        <p>{{ comment.user.username }}</p>
+        <p>{{ comment.text }}</p>
+        <p>{{ comment.created }}</p>
+      {%  endfor %}
+      {{ form_start(comment_form) }}
+          {{ form_widget(comment_form) }}
+          <input type="submit" value="commenter" />
+      {{ form_end(comment_form) }}
 
 
-    <h2>NOTES</h2>
-    -----------------------------------------------
-    {% for notice in notices %}
-        <p>{{ notice.user.username }}</p>
-        <p>{{ notice.comment }}</p>
-        <p>{{ notice.note }}</p>
-    {%  endfor %}
-    -------------------------------------------------
-    {{ form_start(notice_form) }}
-    {{ form_widget(notice_form) }}
-    <input type="submit" value="noter" />
-    {{ form_end(notice_form) }}
+      <h5>NOTES</h5>
+      {% for notice in notices %}
+          <p>{{ notice.user.username }}</p>
+          <p>{{ notice.comment }}</p>
+          <p>{{ notice.note }}</p>
+      {%  endfor %}
+      {{ form_start(notice_form) }}
+      {{ form_widget(notice_form) }}
+      <input type="submit" value="noter" />
+      {{ form_end(notice_form) }}
 
-    <h2>NOTE MOYENNE</h2>
-    {{ averageNote }}
+      <h5>NOTE MOYENNE</h5>
+      {{ averageNote }}
+
+    </div>
 {% endblock %}

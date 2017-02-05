@@ -1,45 +1,35 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Spot list</h1>
+  <div class="parallax-container">
+    <div class="parallax"><img class="responsive-img" src="http://www.kitesurfwallpaper.com/images/papers/f-one-kiteboarding-mitu-monteiro-arial-o.jpg"></div>
+  </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Imagetitle</th>
-                <th>Address</th>
-                <th>Description</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for spot in spots %}
-            <tr>
-                <td><a href="{{ path('spot_show', { 'id': spot.id }) }}">{{ spot.id }}</a></td>
-                <td>{{ spot.title }}</td>
-                <td>{{ spot.imageTitle }}</td>
-                <td>{{ spot.address }}</td>
-                <td>{{ spot.description }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('spot_show', { 'id': spot.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('spot_edit', { 'id': spot.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+  <div class="container">
+    <h1>Liste des spots</h1>
+    <div class="row">
+      {% for spot in spots %}
+        <div class="col s12 m3">
+          <div class="card z-depth-3">
+            <div class="card-image">
+              <img src="{{ spot.imageTitle }}">
+              <span class="card-title">{{ spot.title }}</span>
+              <a class="btn-floating halfway-fab waves-effect waves-light red" href="{{ path('spot_show', {id: spot.id}) }}"><i class="material-icons">play_arrow</i></a>
+            </div>
+            <div class="card-content">
+              <p><strong>{{ spot.address }}</strong></p>
+              <p class="truncate">{{ spot.description }}</p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('spot_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+    <div class="row" style="margin-top: 50px;">
+      <div class="s12" style="text-align: right;">
+        <a class="btn-floating halfway-fab waves-effect waves-light red" href="{{ path('spot_new') }}"><i class="material-icons">add</i></a>
+      </div>
+    </div>
+
+  </div>
 {% endblock %}
