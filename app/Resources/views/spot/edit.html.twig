@@ -1,14 +1,25 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Spot edit</h1>
+  <div class="container">
+    <ul>
+      <li>
+        <a href="{{ path('spot_index') }}"><i class="material-icons" style="vertical-align: middle; font-size: 30px;">view_list</i> Liste des spots</a>
+      </li>
+    </ul>
+    <h4>Mettre à jour le spot</h4>
+    <h1 class="center-align">{{spot.title}}</h1>
 
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
+        <div style="text-align: right; margin-top:20px;">
+          <button class="btn waves-effect waves-light" type="submit" name="action" value="Edit">Editer
+            <i class="material-icons right">send</i>
+          </button>
+        </div>
     {{ form_end(edit_form) }}
 
-    <ul>
+    <!-- <ul>
         <li>
             <a href="{{ path('spot_index') }}">Back to the list</a>
         </li>
@@ -17,5 +28,6 @@
                 <input type="submit" value="Delete">
             {{ form_end(delete_form) }}
         </li>
-    </ul>
+    </ul> -->
+  </div>
 {% endblock %}
