@@ -35,7 +35,6 @@ class User extends BaseUser
         $this->notices = new ArrayCollection();
         $this->spots = new ArrayCollection();
         $this->comments = new ArrayCollection();
-
     }
 
     /**
@@ -46,6 +45,13 @@ class User extends BaseUser
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="avatar", type="string", length=255)
+     */
+    private $avatar;
 
     /**
      * @var string
@@ -106,7 +112,36 @@ class User extends BaseUser
     {
         return $this->id;
     }
-    
+
+    /**
+     * Set url
+     *
+     * @param string $avatar
+     *
+     * @return User
+     */
+    public function setAvatar($avatar)
+    {
+        $fileName = md5(uniqid()).'.'.$avatar->guessExtension();
+        $avatar->move(
+            __DIR__.'/../../../web/uploads/user/avatar',
+            $fileName
+        );
+
+        $this->avatar = $fileName;
+        return $this;
+    }
+
+    /**
+     * Get url
+     *
+     * @return string
+     */
+    public function getAvatar()
+    {
+        return $this->avatar;
+    }
+
     /**
      * Set password
      *
@@ -322,6 +357,4 @@ class User extends BaseUser
     {
         return $this->spots;
     }
-
-
 }

@@ -3,6 +3,7 @@
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -15,8 +16,14 @@ class NoticeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('note');
-            // ->add('comment');
+            ->add('note', null, array(
+                'attr' => array(
+                    'min' => '0',
+                    'max' => '10',
+                    )
+                )
+            );
+            //->add('comment');
     }
 
     /**

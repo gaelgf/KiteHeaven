@@ -56,7 +56,7 @@
           <div class="card-panel grey lighten-5 z-depth-1">
             <div class="row valign-wrapper">
               <div class="col s2">
-                <img src="https://randomuser.me/api/portraits/men/29.jpg" width="75px" class="circle responsive-img">
+                <img src="{{ asset('uploads/user/avatar/' ~ comment.user.avatar) }}" width="75px" class="circle responsive-img">
               </div>
               <div class="col s10">
                 <p><strong>{{ comment.user.username }}</strong></p>
@@ -80,21 +80,4 @@
       {{ form_end(comment_form) }}
 
     </div>
-
-    <!-- <h2>NOTES</h2>
-    -----------------------------------------------
-    {% for notice in notices %}
-        <p>{{ notice.user.username }}</p>
-        <p>{{ notice.comment }}</p>
-        <p>{{ notice.note }}</p>
-    {%  endfor %}
-    -------------------------------------------------
-    {% if spot.user != app.user.id %}
-        {{ form_start(notice_form) }}
-        {{ form_widget(notice_form) }}
-        <input type="submit" value="noter" />
-        {{ form_end(notice_form) }}
-    {% endif %}
-    <h2>NOTE MOYENNE</h2>
-    {{ averageNote }} -->
 {% endblock %}
