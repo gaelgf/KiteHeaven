@@ -2,12 +2,92 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}KiteHeaven{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+       <link rel="stylesheet" href="{{ asset('css/main.css') }}" />
     </head>
     <body>
-        {% block body %}{% endblock %}
+        <header>
+          <nav>
+            <div class="nav-wrapper">
+              <a href="{{ path("homepage") }}" class="brand-logo">KiteHeaven</a>
+              <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+              <ul class="right hide-on-med-and-down">
+                <li><a href="{{ path('spot_index') }}">Spots</a></li>
+                <li><a href="{{ path('video_list') }}">Vidéos</a></li>
+                <li><a href="{{ path('image_list') }}">Images</a></li>
+                {% if app.user %}
+                  <li><a href="{{ path("fos_user_profile_show") }}" >Mon compte</a></li>
+                  <li><a href="{{ path("fos_user_security_logout") }}" >Deconnexion</a></li>
+                {% else %}
+                  <li><a href="{{ path("fos_user_registration_register") }}" >Inscription</a></li>
+                  <li><a href="{{ path("fos_user_security_login") }}" >Connexion</a></li>
+                {% endif %}
+              </ul>
+              <ul class="side-nav" id="mobile-demo">
+                <li><a href="{{ path('spot_index') }}">Spots</a></li>
+                <li><a href="{{ path('video_list') }}">Vidéos</a></li>
+                <li><a href="{{ path('image_list') }}">Images</a></li>
+                {% if app.user %}
+                  <li><a href="{{ path("fos_user_profile_show") }}" >Mon compte</a></li>
+                  <li><a href="{{ path("fos_user_security_logout") }}" >Deconnexion</a></li>
+                {% else %}
+                  <li><a href="{{ path("fos_user_registration_register") }}" >Inscription</a></li>
+                  <li><a href="{{ path("fos_user_security_login") }}" >Connexion</a></li>
+                {% endif %}
+              </ul>
+            </div>
+          </nav>
+        </header>
+        <main>
+          {% block body %}{% endblock %}
+        </main>
+        <footer class="page-footer">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">KiteHeaven</h5>
+                <p class="grey-text text-lighten-4">Le site de Kitesurf communautaire.</p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Liens</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="{{ path('spot_index') }}">Spots</a></li>
+                  {% if app.user %}
+                    <li><a class="grey-text text-lighten-3" href="{{ path("fos_user_profile_show") }}" >Mon compte</a></li>
+                    <li><a class="grey-text text-lighten-3" href="{{ path("fos_user_security_logout") }}" >Deconnexion</a></li>
+                  {% else %}
+                    <li><a class="grey-text text-lighten-3" href="{{ path("fos_user_registration_register") }}" >Inscription</a></li>
+                    <li><a class="grey-text text-lighten-3" href="{{ path("fos_user_security_login") }}" >Connexion</a></li>
+                  {% endif %}
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © 2017 Copyright Text
+            <a class="grey-text text-lighten-4 right" href="http://www.esgi.fr/">ESGI</a>
+            </div>
+          </div>
+        </footer>
+
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+        <script type="text/javascript">
+          $(document).ready(function() {
+            $('select').material_select();
+          });
+          $(document).ready(function(){
+            $('.materialboxed').materialbox();
+            $(".button-collapse").sideNav();
+            $('select').material_select();
+            $('.parallax').parallax();
+          });
+        </script>
         {% block javascripts %}{% endblock %}
     </body>
 </html>

@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+  <div class="parallax-container">
+    <div class="parallax"><img class="responsive-img" src="http://www.kitesurfwallpaper.com/images/papers/f-one-kiteboarding-mitu-monteiro-arial-o.jpg"></div>
+  </div>
+
+  <div class="container">
+    <h1>Liste des spots</h1>
+    <div class="row">
+      {% for spot in spots %}
+        <div class="col s12 m3">
+          <div class="card z-depth-3">
+            <div class="card-image">
+              <img src="{{ asset('uploads/file/' ~ spot.imageTitle) }}">
+              <span class="card-title">{{ spot.title }}</span>
+              <a class="btn-floating halfway-fab waves-effect waves-light red" href="{{ path('spot_show', {id: spot.id}) }}"><i class="material-icons">play_arrow</i></a>
+            </div>
+            <div class="card-content">
+              <p><strong>{{ spot.address }}</strong></p>
+              <p class="truncate">{{ spot.description }}</p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <div style="text-align: right; margin-top:20px;">
+      <a class="btn waves-effect waves-light" href="{{ path('spot_new') }}">Ajouter un spot
+        <i class="material-icons right">add</i>
+      </a>
+    </div>
+
+  </div>
+{% endblock %}

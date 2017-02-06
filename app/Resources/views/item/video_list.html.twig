@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container">
+  <h1>Vidéos</h1>
+
+  <div class="row">
+    {% for item in items %}
+      <div class="col s4">
+        <iframe src="{{item.url}}" frameborder="0" allowfullscreen></iframe>
+        <h6>{{item.spot.title}}</h6>
+      </div>
+    {% endfor %}
+  </div>
+
+  <div style="text-align: right; margin-top:20px;">
+    <a class="btn waves-effect waves-light" href="{{ path('video_new') }}">Ajouter une vidéo
+      <i class="material-icons right">add</i>
+    </a>
+  </div>
+
+  <!-- <table>
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Type</th>
+        <th>Url</th>
+        <th>Categories :</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in items %}
+      <tr>
+        <td><a href="{{ path('item_show', { 'id': item.id }) }}">{{ item.id }}</a></td>
+        <td>{{ item.type }}</td>
+        <td>{{ item.url }}</td>
+        <td>
+          {% for category in item.categories %}
+          {{ category.name}}
+          {% endfor %}
+        </td>
+        <td>
+          <ul>
+            <li>
+              <a href="{{ path('item_show', { 'id': item.id }) }}">show</a>
+            </li>
+            <li>
+              <a href="{{ path('item_edit', { 'id': item.id }) }}">edit</a>
+            </li>
+          </ul>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <ul>
+    <li>
+      <a href="{{ path('spot_new') }}">Create a new entry</a>
+    </li>
+  </ul>
+  {% for item in items %}
+  <p>{{ item.type }}</p>
+  <p>{{ item.url  }}</p>
+  {%  endfor %} -->
+</div>
+{% endblock %}

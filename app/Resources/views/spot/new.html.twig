@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+  <div class="container">
+    <ul>
+        <li>
+            <a href="{{ path('spot_index') }}"><i class="material-icons" style="vertical-align: middle;">view_list</i> Liste des spots</a>
+        </li>
+    </ul>
+
+    <h1>Créer un spot</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <div style="text-align: right; margin-top:20px;">
+          <button class="btn waves-effect waves-light" type="submit" name="action" value="Create">Créer
+            <i class="material-icons right">send</i>
+          </button>
+        </div>
+    {{ form_end(form) }}
+
+  </div>
+
+{% endblock %}
