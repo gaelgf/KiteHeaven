@@ -17,4 +17,23 @@ class AdminController extends EasyAdminController
     {
         return parent::indexAction($request);
     }
+
+    public function createEditForm($entity, array $entityProperties)
+    {
+        $editForm = parent::createEditForm($entity, $entityProperties);
+
+        if ($entity instanceof User) {
+            // the trick is to remove the default field and then
+            // add the customized field
+            $editForm->remove('city');
+            $editForm->add('city', 'choice', array('choices' => array(
+                'London', 'New York', 'Paris', 'Tokyo'
+            )));
+        }
+
+        return $editForm;
+    }
+
+
+
 }
