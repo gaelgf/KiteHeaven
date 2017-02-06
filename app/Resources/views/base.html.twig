@@ -11,7 +11,7 @@
     </head>
     <body>
         <header>
-          <nav>
+          <nav class="light-blue darken-1">
             <div class="nav-wrapper">
               <a href="{{ path("homepage") }}" class="brand-logo">KiteHeaven</a>
               <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
@@ -45,7 +45,7 @@
         <main>
           {% block body %}{% endblock %}
         </main>
-        <footer class="page-footer">
+        <footer class="page-footer light-blue darken-1">
           <div class="container">
             <div class="row">
               <div class="col l6 s12">
@@ -56,6 +56,8 @@
                 <h5 class="white-text">Liens</h5>
                 <ul>
                   <li><a class="grey-text text-lighten-3" href="{{ path('spot_index') }}">Spots</a></li>
+                  <li><a class="grey-text text-lighten-3" href="{{ path('video_list') }}">Vidéos</a></li>
+                  <li><a class="grey-text text-lighten-3" href="{{ path('image_list') }}">Images</a></li>
                   {% if app.user %}
                     <li><a class="grey-text text-lighten-3" href="{{ path("fos_user_profile_show") }}" >Mon compte</a></li>
                     <li><a class="grey-text text-lighten-3" href="{{ path("fos_user_security_logout") }}" >Deconnexion</a></li>
@@ -82,6 +84,7 @@
             $('select').material_select();
           });
           $(document).ready(function(){
+            $('.slider').slider({height: 800});
             $('.materialboxed').materialbox();
             $(".button-collapse").sideNav();
             $('select').material_select();

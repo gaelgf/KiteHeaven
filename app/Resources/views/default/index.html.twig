@@ -1,10 +1,41 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="container">
-      <h1 class="center-align">KiteHeaven</h1>
+    <div class="slider">
+      <ul class="slides">
+        <li>
+          <div style="position: relative">
+            <a href="{{ path('spot_index') }}">
+              <img src="http://www.kitesurfwallpaper.com/images/papers/f-one-kiteboarding-mitu-monteiro-arial-o.jpg"> <!-- random image -->
+              <div class="caption center-align">
+                <h3>Spots</h3>
+                <h5 class="light grey-text text-lighten-3">Accéder à la liste des spots.</h5>
+              </div>
+            </a>
+          </div>
+        </li>
+        <li>
+          <div style="position: relative">
+            <a href="{{ path('video_list') }}">
+              <img src="http://cdn.wallpapersafari.com/53/31/NXsEg9.jpg"> <!-- random image -->
+              <div class="caption left-align">
+                <h3>Vidéos</h3>
+                <h5 class="light grey-text text-lighten-3">Accéder à la liste des vidéos.</h5>
+              </div>
+            </a>
+          </div>
+        </li>
+        <li>
+          <div style="position: relative">
+            <a href="{{ path('image_list') }}">
+              <img src="http://www.kitesurfwallpaper.com/images/papers/rrd-kiteboarding-religion-riders-on-a-wave-hd-1.jpg"> <!-- random image -->
+              <div class="caption right-align">
+                <h3>Images</h3>
+                <h5 class="light grey-text text-lighten-3">Accéder à la liste des images.</h5>
+              </div>
+            </a>
+          </div>
+        </li>
+      </ul>
     </div>
-{% endblock %}
-
-{% block stylesheets %}
 {% endblock %}
