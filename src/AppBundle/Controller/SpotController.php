@@ -118,6 +118,7 @@ class SpotController extends Controller
          */
         $noticeRepository = $em->getRepository('AppBundle:Notice');
         $averageNote = $noticeRepository->getAverageNotes($spot->getId());
+        $items = $spot->getItems();
         return $this->render('spot/show.html.twig', array(
             'spot' => $spot,
             'delete_form' => $deleteForm->createView(),
@@ -125,7 +126,8 @@ class SpotController extends Controller
             'notice_form' => $noticeForm->createView(),
             'notices' => $spot->getNotices(),
             'comments' => $spot->getComments(),
-            'averageNote' => number_format($averageNote, 2, ',', ' ')
+            'averageNote' => number_format($averageNote, 2, ',', ' '),
+            'items' => $items
         ));
     }
 

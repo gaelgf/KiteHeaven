@@ -21,19 +21,31 @@
 
       <p>{{ spot.description }}</p>
 
-      <!-- <ul>
-          <li>
-              <a href="{{ path('spot_index') }}">Back to the list</a>
-          </li>
-          <li>
-              <a href="{{ path('spot_edit', { 'id': spot.id }) }}">Edit</a>
-          </li>
-          <li>
-              {{ form_start(delete_form) }}
-                  <input type="submit" value="Delete">
-              {{ form_end(delete_form) }}
-          </li>
-      </ul> -->
+      <br><br>
+
+      <h5>Vidéos</h5>
+      <div class="row">
+        {% for item in items %}
+          {% if item.type == 'video' %}
+          <div class="col s4">
+            <iframe src="{{item.url}}" frameborder="0" allowfullscreen></iframe>
+          </div>
+          {% endif %}
+        {%  endfor %}
+      </div>
+
+      <br><br>
+
+      <h5>Images</h5>
+      <div class="row">
+        {% for item in items %}
+          {% if item.type == 'image' %}
+          <div class="col s4">
+            <img width="200px" class="materialboxed" src="{{ asset('uploads/file/' ~ item.url) }}" alt="">
+          </div>
+          {% endif %}
+        {%  endfor %}
+      </div>
 
       <br><br>
 
