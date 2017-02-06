@@ -44,6 +44,10 @@ class SpotController extends Controller
      */
     public function newAction(Request $request)
     {
+      if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+          throw $this->createAccessDeniedException();
+      }
+
         $spot = new Spot();
         $spot->setUser($this->get('security.token_storage')->getToken()->getUser());
         $form = $this->createForm('AppBundle\Form\SpotType', $spot);
@@ -139,6 +143,10 @@ class SpotController extends Controller
      */
     public function editAction(Request $request, Spot $spot)
     {
+      if (!$this->get('security.authorization_checker')->isGranted('ROLE_SUPER_ADMIN')) {
+          throw $this->createAccessDeniedException();
+      }
+
         $deleteForm = $this->createDeleteForm($spot);
         $editForm = $this->createForm('AppBundle\Form\SpotType', $spot);
         $editForm->handleRequest($request);
@@ -170,6 +178,10 @@ class SpotController extends Controller
      */
     public function deleteAction(Request $request, Spot $spot)
     {
+      if (!$this->get('security.authorization_checker')->isGranted('ROLE_SUPER_ADMIN')) {
+          throw $this->createAccessDeniedException();
+      }
+
         $form = $this->createDeleteForm($spot);
         $form->handleRequest($request);
 

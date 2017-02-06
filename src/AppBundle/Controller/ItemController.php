@@ -80,6 +80,10 @@ class ItemController extends Controller
      */
     public function newImageAction(Request $request)
     {
+      if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+          throw $this->createAccessDeniedException();
+      }
+
         $item = new Item();
         $form = $this->createForm('AppBundle\Form\ItemType',
             $item,
@@ -130,6 +134,10 @@ class ItemController extends Controller
      */
     public function newVideoAction(Request $request)
     {
+      if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+          throw $this->createAccessDeniedException();
+      }
+
         $item = new Item();
         $form = $this->createForm('AppBundle\Form\ItemType', $item, array(
             'item_type' => 'video', 'id_user' => $this->getUser()->getId()
@@ -177,6 +185,10 @@ class ItemController extends Controller
      */
     public function editAction(Request $request, Item $item)
     {
+      if (!$this->get('security.authorization_checker')->isGranted('ROLE_SUPER_ADMIN')) {
+          throw $this->createAccessDeniedException();
+      }
+
         $deleteForm = $this->createDeleteForm($item);
         $editForm = $this->createForm('AppBundle\Form\ItemType', $item, array(
             'item_type' => 'edit', 'id_user' => $this->getUser()->getId()
@@ -211,6 +223,10 @@ class ItemController extends Controller
      */
     public function deleteAction(Request $request, Item $item)
     {
+      if (!$this->get('security.authorization_checker')->isGranted('ROLE_SUPER_ADMIN')) {
+          throw $this->createAccessDeniedException();
+      }
+
         $form = $this->createDeleteForm($item);
         $form->handleRequest($request);
 

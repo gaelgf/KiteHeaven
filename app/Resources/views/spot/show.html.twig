@@ -49,15 +49,17 @@
 
       <br><br>
 
-      <h5>Noter ce spot</h5>
-        {{ form_start(notice_form) }}
-        {{ form_widget(notice_form) }}
-        <div style="text-align: right; margin-top:20px;">
-          <button class="btn waves-effect waves-light" type="submit" name="action" value="Create">Noter
-            <i class="material-icons right">send</i>
-          </button>
-        </div>
-      {{ form_end(notice_form) }}
+      {% if app.user %}
+        <h5>Noter ce spot</h5>
+          {{ form_start(notice_form) }}
+          {{ form_widget(notice_form) }}
+          <div style="text-align: right; margin-top:20px;">
+            <button class="btn waves-effect waves-light" type="submit" name="action" value="Create">Noter
+              <i class="material-icons right">send</i>
+            </button>
+          </div>
+        {{ form_end(notice_form) }}
+      {% endif %}
 
       <br><br>
 
@@ -82,14 +84,16 @@
         </div>
         {%  endfor %}
       </div>
-      {{ form_start(comment_form) }}
-          {{ form_widget(comment_form) }}
-          <div style="text-align: right; margin-top:20px;">
-            <button class="btn waves-effect waves-light" type="submit" name="action" value="Create">Ajouter
-              <i class="material-icons right">send</i>
-            </button>
-          </div>
-      {{ form_end(comment_form) }}
+      {% if app.user %}
+        {{ form_start(comment_form) }}
+            {{ form_widget(comment_form) }}
+            <div style="text-align: right; margin-top:20px;">
+              <button class="btn waves-effect waves-light" type="submit" name="action" value="Create">Ajouter
+                <i class="material-icons right">send</i>
+              </button>
+            </div>
+        {{ form_end(comment_form) }}
+      {% endif %}
 
     </div>
 {% endblock %}

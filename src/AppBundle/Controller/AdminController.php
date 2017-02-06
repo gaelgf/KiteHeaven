@@ -15,6 +15,10 @@ class AdminController extends EasyAdminController
      */
     public function indexAction(Request $request)
     {
+      if (!$this->get('security.authorization_checker')->isGranted('ROLE_SUPER_ADMIN')) {
+          throw $this->createAccessDeniedException();
+      }
+
         return parent::indexAction($request);
     }
 

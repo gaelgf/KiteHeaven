@@ -15,10 +15,12 @@
     {% endfor %}
   </div>
 
-  <div style="text-align: right; margin-top:20px;">
-    <a class="btn waves-effect waves-light" href="{{ path('video_new') }}">Ajouter une vidéo
-      <i class="material-icons right">add</i>
-    </a>
-  </div>
+  {% if app.user %}
+    <div style="text-align: right; margin-top:20px;">
+      <a class="btn waves-effect waves-light" href="{{ path('video_new') }}">Ajouter une vidéo
+        <i class="material-icons right">add</i>
+      </a>
+    </div>
+  {% endif %}
 </div>
 {% endblock %}

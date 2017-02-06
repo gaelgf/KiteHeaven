@@ -25,11 +25,13 @@
       {% endfor %}
     </div>
 
-    <div style="text-align: right; margin-top:20px;">
-      <a class="btn waves-effect waves-light" href="{{ path('spot_new') }}">Ajouter un spot
-        <i class="material-icons right">add</i>
-      </a>
-    </div>
+    {% if app.user %}
+      <div style="text-align: right; margin-top:20px;">
+        <a class="btn waves-effect waves-light" href="{{ path('spot_new') }}">Ajouter un spot
+          <i class="material-icons right">add</i>
+        </a>
+      </div>
+    {% endif %}
 
   </div>
 {% endblock %}
