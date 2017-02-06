@@ -77,8 +77,8 @@ easy_admin:
     entities:
         User:
             class: AppBundle\Entity\User
-    list:
-        fields: ['username', 'Email', 'Enabled', 'action']
+            list:
+                fields: ['username', 'Email', 'enabled']
     list_actions: ['edit', 'show']
     design:
         brand_color: '#1ABC9C'
