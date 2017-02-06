@@ -11,7 +11,10 @@ security:
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
         in_memory:
-            memory: ~
+                memory:
+                    users:
+                        user:  { password: user, roles: [ 'ROLE_USER' ] }
+                        admin: { password: admin, roles: [ 'ROLE_ADMIN' ] }
         fos_userbundle:
             id: fos_user.user_provider.username
 

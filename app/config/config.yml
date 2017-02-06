@@ -71,3 +71,14 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: AppBundle\Entity\User
+
+
+easy_admin:
+    entities:
+        User:
+            class: AppBundle\Entity\User
+    list:
+        fields: ['username', 'Email', 'Enabled', 'action']
+    list_actions: ['edit', 'show']
+    design:
+        brand_color: '#1ABC9C'
