@@ -78,3 +78,29 @@ fos_user:
     profile:
         form:
             type: AppBundle\Form\UserProfileType
+
+easy_admin:
+    entities:
+        User:
+            class: AppBundle\Entity\User
+            list:
+                fields: ['username', 'Email', 'enabled']
+            list_actions: ['edit', 'show']
+            form:
+                fields:
+                    - { property: 'username', type: 'text', label: 'Pseudo' }
+                    - { property: 'email', type: 'email', label: 'Email' }
+                    - { property: 'password', type: 'password', label: 'Mot de passe' }
+                  #  - { property: 'roles', type: 'choice', type_options: { choices: { 'USER': 'ROLE_USER', 'ADMIN': 'ROLE_ADMIN' } } }
+        Category:
+            class: AppBundle\Entity\Category
+        Comment:
+             class: AppBundle\Entity\Comment
+        Item:
+             class: AppBundle\Entity\Item
+        Spot:
+             class: AppBundle\Entity\Spot
+
+
+    design:
+        brand_color: '#0080FF'
