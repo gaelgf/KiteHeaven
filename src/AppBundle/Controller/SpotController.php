@@ -123,6 +123,14 @@ class SpotController extends Controller
         $noticeRepository = $em->getRepository('AppBundle:Notice');
         $averageNote = $noticeRepository->getAverageNotes($spot->getId());
         $items = $spot->getItems();
+
+        if (is_string($this->get('security.token_storage')->getToken()->getUser())) {
+            $isNoted = true;
+        } else {
+            $isNoted = $noticeRepository->spotIsNotedByUser(
+                $spot, $this->get('security.token_storage')->getToken()->getUser()->getId()
+            );
+        }
         return $this->render('spot/show.html.twig', array(
             'spot' => $spot,
             'delete_form' => $deleteForm->createView(),
@@ -131,7 +139,8 @@ class SpotController extends Controller
             'notices' => $spot->getNotices(),
             'comments' => $spot->getComments(),
             'averageNote' => number_format($averageNote, 2, ',', ' '),
-            'items' => $items
+            'items' => $items,
+            'isNoted' => $isNoted
         ));
     }
 

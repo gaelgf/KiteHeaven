@@ -49,7 +49,7 @@
 
       <br><br>
 
-      {% if app.user %}
+      {% if app.user and isNoted == false  and (spot.user.id != app.user.id) %}
         <h5>Noter ce spot</h5>
           {{ form_start(notice_form) }}
           {{ form_widget(notice_form) }}
@@ -84,16 +84,14 @@
         </div>
         {%  endfor %}
       </div>
-      {% if app.user %}
-        {{ form_start(comment_form) }}
-            {{ form_widget(comment_form) }}
-            <div style="text-align: right; margin-top:20px;">
-              <button class="btn waves-effect waves-light" type="submit" name="action" value="Create">Ajouter
-                <i class="material-icons right">send</i>
-              </button>
-            </div>
-        {{ form_end(comment_form) }}
-      {% endif %}
+      {{ form_start(comment_form) }}
+          {{ form_widget(comment_form) }}
+          <div style="text-align: right; margin-top:20px;">
+            <button class="btn waves-effect waves-light" type="submit" name="action" value="Create">Ajouter
+              <i class="material-icons right">send</i>
+            </button>
+          </div>
+      {{ form_end(comment_form) }}
 
     </div>
 {% endblock %}

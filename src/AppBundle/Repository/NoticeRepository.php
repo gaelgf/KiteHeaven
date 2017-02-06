@@ -26,4 +26,25 @@ class NoticeRepository extends \Doctrine\ORM\EntityRepository
         $notes = $query->getResult();
         return $notes[0]['sum_notes'];
     }
+
+    /**
+    * @param $user_id
+    * @param $spot_id
+    * @return bool
+    */
+    public function spotIsNotedByUser($spot_id, $user_id)
+    {
+        $query = $this->createQueryBuilder('notice')
+            ->select('notice.note')
+            ->where('notice.spot = :spot_id')
+            ->andWhere('notice.user = :user_id')
+            ->setParameter('spot_id', $spot_id)
+            ->setParameter('user_id', $user_id)
+            ->getQuery();
+        $notes = $query->getResult();
+        if (empty($notes)) {
+            return false;
+        }
+        return true;
+    }
 }
